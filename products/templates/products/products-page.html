@@ -1,0 +1,43 @@
+{% include 'main.html' %}
+<h1>
+    Products
+</h1>
+
+
+{% if user == 'current' %}
+
+    <a href="{% url 'add-product' %}">add product</a>
+    <hr>
+
+    {% for product in products %}
+
+    <a href="{% url 'single-product' product.id %}">
+        <img style="max-width: 60px;" src="{{product.featured_image.url}}" alt="">
+        <h1> {{product.title}} </h1>
+        <p> {{product.description}} </p>
+    </a>
+
+    <p>
+        <a href="{% url 'update-product' product.id %}">edit</a>
+    </p>
+    <p>
+        <a href="{% url 'delete-product' product.id %}">delete</a>
+    </p>
+
+    {% endfor %}
+
+
+{% else %}
+
+    {% for product in products %}
+
+    <a href="{% url 'single-product' product.id %}">
+        <img style="max-width: 60px;" src="{{product.featured_image.url}}" alt="">
+        <h1> {{product.title}} </h1>
+        <p> {{product.description}} </p>
+    </a>
+
+
+    {% endfor %}
+
+{% endif %}

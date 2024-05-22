@@ -1,0 +1,16 @@
+{% include 'main.html' %}
+<h1>
+    Products
+</h1>
+
+<hr>
+{% for product in products %}
+
+<a href="{% url 'single-product' product.id %}">
+    <img style="max-width: 60px;" src="{{product.featured_image.url}}" alt="">
+    <h1> {{product.title}} </h1>
+    <p> {{product.description}} </p>
+</a>
+
+
+{% endfor %}

@@ -1,0 +1,39 @@
+{% include 'main.html' %}
+<h1>
+    dashboard
+</h1>
+
+<p>
+    <a href="{% url 'user-products-page' %}">My products</a>
+</p>
+
+<p>
+    <a href="{% url 'products-page' %}">All products</a>
+</p>
+
+
+<p>
+    <a href="{% url 'logout' %}">logout</a>
+</p>
+
+
+<hr>
+
+<div>
+    <h1>Shops</h1>
+    <hr>
+
+
+    {% for profile in profiles %}
+
+    <a href="{% url 'user-products' profile.id %}">
+        <h2> {{profile.name}} </h2>
+    </a>
+    
+    <img src="{{profile.profile_image.url}}" alt="" style="max-width: 100px; max-height: 50px;">
+    <h5> {{profile.username}} </h5>
+
+
+    {% endfor %}
+
+</div>

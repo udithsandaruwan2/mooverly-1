@@ -1,0 +1,12 @@
+{% include 'main.html' %}
+<h1>Are you Sure to delete {{product.title}} ? </h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        <a href="{% url 'products-page' %}">back</a>
+    </p>
+
+    <input type="submit" value="submit" name="" id="">
+</form>
