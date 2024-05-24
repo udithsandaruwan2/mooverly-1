@@ -1,12 +1,31 @@
-{% include 'main.html' %}
-<h1>Are you Sure to delete {{product.title}} ? </h1>
+{% extends 'main-web-non-sidebar.html' %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block content %}
 
-    <p>
-        <a href="{% url 'products-page' %}">back</a>
-    </p>
+<div class="row mt-5">
+    <div class="col-md-3 col-lg-3"></div>
+    <div class="col-md-6 col-lg-6">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <h4 class="card-title">DELETE PRODUCT</h4>
+                    <p class="card-text">
+                        Are you sure?
+                    </p>
+                    <form class="form" method="POST">
 
-    <input type="submit" value="submit" name="" id="">
-</form>
+                        {% csrf_token %}
+
+                        <div class="form-actions d-flex justify-content-end">
+                            <a type="text" class="btn btn-light-primary m-1" style="background-color: grey;" href="{% url 'account' %}">Go Back</a>
+                            <input type="submit" class="btn btn-primary me-1 m-1" value="Confirm" style="background-color: red;"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-lg-3"></div>
+</div>
+
+{% endblock content %}

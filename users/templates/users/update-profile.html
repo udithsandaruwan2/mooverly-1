@@ -1,10 +1,33 @@
-{% include 'main.html' %}
-<h1>Update Profile</h1>
+{% extends 'main-web-non-sidebar.html' %}
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+{% block content %}
 
-    {{form.as_p}}
+<div class="row mt-5">
+    <div class="col-md-3 col-lg-3 col-sm-1 col-xs-1"></div>
+    <div class="col-md-6 col-lg-6 col-sm-10 col-xs-10">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;" >UPDATE ABOUT</h4>
+                    <div class="m-4">
+                        <hr>
+                    </div>
+                    <form class="form" method="POST" enctype="multipart/form-data">
 
-    <input type="submit" value="submit" />
-</form>
+                        {% csrf_token %}
+
+                        {{form.as_p}}
+
+                        <div class="form-actions d-flex justify-content-end">
+                            <a type="text" class="btn btn-light-primary m-1" style="background-color: grey; color: white;" href="{% url 'dashboard' %}">Go Back</a>
+                            <input type="submit" class="btn btn-primary me-1 m-1" value="Update"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-1 col-xs-1"></div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+.messages {
+    position: fixed;
+    top: 10px; /* Adjust this value to change the vertical position */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; /* Ensure it's above other content */
+    display: flex;
+    flex-direction: row; /* Display messages in a row */
+    gap: 10px; /* Space between messages */
+    max-width: 90%; /* Ensure the messages don’t exceed the viewport width */
+    overflow-x: auto; /* Handle overflow if there are many alerts */
+}
+
+.alert {
+    animation: fade-in 0.75s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    background-color: rgba(13, 110, 253, 0.7); /* Updated for transparency */
+    min-width: 350px; /* Minimum width for alerts */
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+

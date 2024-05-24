@@ -1,4 +1,4 @@
-{% include 'main.html' %}
+
 <h1> {{product.title}} </h1>
 
 <img src="{{product.featured_image.url}}" alt="">
@@ -8,3 +8,107 @@
 <p>
     <a href="{% url 'products-page' %}">back</a>
 </p>
+
+
+{% extends 'main-web-non-sidebar.html' %}
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-light">
+    <div class="container d-block">
+        <a href="{% url 'dashboard' %}"><i class="bi bi-chevron-left"></i></a>
+        <a class="navbar-brand ms-4" href="{% url 'dashboard' %}">
+            <img src="" alt="EventArc">
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12">
+            
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">TOOLS & STACKS</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Candy cupcake sugar plum oat cake wafer marzipan jujubes.
+                            Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut pastry gummies
+                            tiramisu
+                            chocolate bar muffin.
+                        </p>
+                        <hr>
+
+                        {% for category in product.categories.all %}
+
+                        <button class="btn bg-light-primary m-1" style="border-radius: 50px;">
+                            {{category}} 
+                        </button>                        
+
+                        {% endfor %}
+
+                        <hr>
+
+                        {% for size in product.size.all %}
+
+                        <button class="btn bg-light-primary m-1" style="border-radius: 50px;">
+                            {{size}} 
+                        </button>                        
+
+                        {% endfor %}
+
+                        {% if project.demo_link %}
+
+                        <div class="mt-4">
+                            <a href="#" class="btn icon icon-left btn-light" style="background-color: rgba(255, 255, 255, 0.3); border: none; color: aliceblue; border-radius: 50px;" class="btn icon icon-left btn-light">
+                                <i data-feather="file"></i> 
+                                Source Code </a>
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-content">
+                    <img class="card-img-bottom img-fluid" src="{{ product.featured_image.url }}"
+                        alt="Card image cap" style="height: 20rem; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{product.title}}</h4>
+                        <small class="text-muted">By {{product.owner.name}}</small>
+                        <hr>    
+                        <p class="card-text">
+                            {{product.description}}
+                        </p>
+                    </div>
+                    <div class="btn-group align-items-center mx-2 px-1">
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-heart d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-chat d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-bookmark d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

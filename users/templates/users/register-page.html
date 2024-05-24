@@ -1,13 +1,97 @@
-{% include 'main.html' %}
-<h1>Register Page</h1>
+{% extends 'main-web-non-sidebar.html' %}
 
-<form method="POST">
+{% load static %}
 
-    {% csrf_token %}
+{% block content %}
+
+<div id="auth">
+        
+    <div class="row h-100">
+        <div class="col-lg-5 col-12">
+            <div id="auth-left">
+                <div class="auth-logo" style="margin-bottom: 80px;">
+                    <a href="">
+                        <img src="" alt="Logo" style="width: 220px; height: auto;">
+                    </a>                    
+                </div>                
+                <h1 class="auth-title">Sign Up</h1>
+                <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+                    
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    
+                    {% for field in form %}
+
+                    <div class="form-group position-relative has-icon-left mb-4">
+
+                        {{field.label}}
+
+                        {{field}}
+                        
+                        {% comment %} {% if field.help_text %}
+
+                        <small {{field.help_text}} ></small>
+                            
+                        {% endif %} {% endcomment %}
+                            
+                        
+                        {% for error in field.errors %}
+
+                        <p style="color:red;"> {{error}} </p>
+                            
+                        {% endfor %}
+                    
+                    </div>
+                        
+                    {% endfor %}
+
+                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
+
+                </form>
+                <div class="text-center mt-5 text-lg fs-4">
+                    <p class="text-gray-600">Already have an account? 
+                        <a href="{% url 'login' %}" class="font-bold">Sign
+                        in</a>.
+                    </p>
+                </div>
     
 
-    {{form.as_p}}
 
-    <input type="submit" value="submit" />
 
-</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="col-lg-7 d-none d-lg-block">
+            <div id="auth-right" style="position: relative; width: 100%; height: 100%;">
+                <img src="" alt="Login Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+{% endblock content %}

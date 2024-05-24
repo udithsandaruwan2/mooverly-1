@@ -13,28 +13,32 @@ class CustomUserCreationForm(UserCreationForm):
             'first_name':'Name', 
         }
         
-    # def __init__(self, *args, **kwargs):
-    #     super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
 
-    #     self.fields['first_name'].widget.attrs.update(
-    #         {'class': 'form-control form-control-xl', 'placeholder': 'eg : Udith Sandaruwan', 'type':'text'},
-    #     )
+        self.fields['first_name'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : Udith Sandaruwan', 'type':'text'},
+        )
 
-    #     self.fields['email'].widget.attrs.update(
-    #         {'class': 'form-control form-control-xl', 'placeholder':'eg : udith@eventarc.com', 'type':'text'}
-    #     )
+        self.fields['email'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder':'eg : udith@eventarc.com', 'type':'text'}
+        )
 
-    #     self.fields['username'].widget.attrs.update(
-    #         {'class': 'form-control form-control-xl', 'placeholder': 'eg : udith002', 'type':'text'}
-    #     )
+        self.fields['username'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : udith002', 'type':'text'}
+        )
 
-    #     self.fields['password1'].widget.attrs.update(
-    #         {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
-    #     )
+        self.fields['password1'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
+        )
 
-    #     self.fields['password2'].widget.attrs.update(
-    #         {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
-    #     )
+        self.fields['password2'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
+        )
+        
+        self.fields['staff_code'].widget.attrs.update(
+            {'class': 'form-control form-control-xl', 'placeholder': 'SHOP00XX', 'type':'password'}
+        )
 
 class ProfileForm(ModelForm):
     class Meta:
@@ -42,53 +46,34 @@ class ProfileForm(ModelForm):
         fields = ['name', 'email', 'username', 'location', 'short_intro', 'bio',
                 'profile_image']
         
-    # def __init__(self, *args, **kwargs):
-    #     super(ProfileForm, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
         
-    #     self.fields['name'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['name'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
         
-    #     self.fields['email'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['email'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
         
-    #     self.fields['username'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['username'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
         
-    #     self.fields['location'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['location'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
         
-    #     self.fields['short_intro'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['short_intro'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
         
-    #     self.fields['bio'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
+        self.fields['bio'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
 
-    #     self.fields['profile_image'].widget.attrs.update(
-    #         {'class': 'form-control', 'id':'formFile'}
-    #     )
+        self.fields['profile_image'].widget.attrs.update(
+            {'class': 'form-control', 'id':'formFile'}
+        )
         
-    #     self.fields['social_github'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
-        
-    #     self.fields['social_x'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
-        
-    #     self.fields['social_linkedin'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
-        
-    #     self.fields['social_youtube'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )
-        
-    #     self.fields['social_portfolio'].widget.attrs.update(
-    #         {'class': 'form-control'}
-    #     )

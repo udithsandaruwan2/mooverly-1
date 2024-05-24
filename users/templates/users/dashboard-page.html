@@ -1,39 +1,213 @@
-{% include 'main.html' %}
-<h1>
-    dashboard
-</h1>
+{% extends 'main-web-non-sidebar.html' %}
 
-<p>
-    <a href="{% url 'user-products-page' %}">My products</a>
-</p>
+{% load static %}
 
-<p>
-    <a href="{% url 'products-page' %}">All products</a>
-</p>
+{% block content %}
+
+<div class="row">
+    <div style="text-align: center;" class="m-4">
+        <h1>
+        Dashboard - 
+        {{ staff_code }}
+    </h1>
+</div>
+    <div class="col-1"></div>
+    <div class="col-10">
+        <hr>
+    </div>
+    <div class="col-1"></div>
+</div>
 
 
-<p>
-    <a href="{% url 'logout' %}">logout</a>
-</p>
+    
+    
 
 
-<hr>
+<div class="m-4">
+    <div class="row justify-content-center">
 
+        {% if 'SHOP' in staff_code %}
+
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'user-products-page' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                <div class="stats-icon purple mb-2">
+                                    <i class="iconly-boldShow"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">My Products</h4>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'add-product' %}">
+                <div class="card"> 
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                <div class="stats-icon blue mb-2">
+                                    <i class="iconly-boldProfile"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Add Products</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {% endif %}
+
+        {% if 'ADMIN' in staff_code %}
+        
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'products-page' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                <div class="stats-icon green mb-2">
+                                    <i class="iconly-boldAdd-User"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">All Products</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {% endif %}
+
+        
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'update-profile' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                <div class="stats-icon red mb-2">
+                                    <i class="iconly-boldBookmark"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Update Profile</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'logout' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                <div class="stats-icon red mb-2">
+                                    <i class="iconly-boldBookmark"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Logout</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+    </div>
+    </div>
+
+
+
+
+
+{% if 'ADMIN' in staff_code %}
+
+<div class="row mb-5 mt-5">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <form class="form" method="get">
+            <div class="input-group input-group-lg">
+                <input type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" value="{{search_query}}" placeholder="Search by product name">
+                <div class="m-2">
+                    <button class="btn btn-outline-secondary rounded-pill" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>   
 <div>
-    <h1>Shops</h1>
+
     <hr>
 
+    <div class="m-4">
+        <div class="row justify-content-center">
 
-    {% for profile in profiles %}
+{% for profile in profiles %}
 
-    <a href="{% url 'user-products' profile.id %}">
-        <h2> {{profile.name}} </h2>
-    </a>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="{% url 'user-products' profile.id %}">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="m-4 mb-0">
+                                        <div class="avatar avatar-xl me-3">
+                                            <img src="{{profile.profile_image.url}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-9">
+                                    <div class="m-4 mb-0">
+                                        <h4>{{profile.name}}</h4>
+                                        <h6>{{profile.short_intro|slice:"20"}}</h6>
+                                    </div>
+                                </div>
+                            </div>                        
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{profile.bio|slice:"170"}}
+                                </p>
     
-    <img src="{{profile.profile_image.url}}" alt="" style="max-width: 100px; max-height: 50px;">
-    <h5> {{profile.username}} </h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>     
+            </div>
+            
+            {% endfor %}
+
+        </div>
+    </div>
 
 
-    {% endfor %}
 
-</div>
+
+
+
+
+
+
+
+{% endif %}
+
+{% endblock content %}

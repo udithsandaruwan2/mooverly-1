@@ -1,8 +1,14 @@
-from .models import Profile
+from .models import Profile, StaffCode
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, post_delete
 from .utils import local
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from .models import Profile, StaffCode
+
+@receiver(post_save, sender=User)
 def createProfile(sender, instance, created, **kwargs):
     if created:
         user = instance
@@ -12,8 +18,13 @@ def createProfile(sender, instance, created, **kwargs):
             username=user.username, 
             email=user.email,
             name=user.first_name, 
-            staffCode=staff_code,
+            staff_code=staff_code,
         )
+        
+        if staff_code:
+            staff_code.owner = profile
+            staff_code.save()
+
 
 def updateUser(sender, instance, created, **kwargs):
     profile = instance

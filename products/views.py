@@ -2,20 +2,29 @@ from django.shortcuts import render,redirect
 from .models import Product
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 @login_required(login_url="login")
 def productsPage(request):
     user = "all"
+    search_query = request.GET.get('search', '')
     products = Product.objects.all()
-    context = {'user':user, 'products':products}
+    products = products.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query)) 
+    context = {'user':user, 'products':products, 'search_query':search_query}
     return render(request, 'products/products-page.html', context)
+
+from django.db.models import Q
 
 @login_required(login_url="login")
 def userProductsPage(request):
     user = "current"
-    profile = request.user.profile
+    user = request.user  # Use the current user object
+    profile = user.profile
+    search_query = request.GET.get('search', '')
     products = Product.objects.filter(owner=profile)
-    context = {'user':user, 'products':products}
+    products_searched = products.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
+    
+    context = {'user': user, 'products': products_searched, 'search_query':search_query}  # Return only the searched products
     return render(request, 'products/products-page.html', context)
 
 @login_required(login_url="login")
