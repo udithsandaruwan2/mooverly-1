@@ -77,3 +77,17 @@ class ProfileForm(ModelForm):
             {'class': 'form-control', 'id':'formFile'}
         )
         
+
+class StaffcodeForm(forms.ModelForm):
+    class Meta:
+        model = StaffCode
+        fields = ['code']
+
+    def __init__(self, *args, **kwargs):
+        super(StaffcodeForm, self).__init__(*args, **kwargs)
+
+        self.fields['code'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'SHOP00XX'}
+        )
+
+        

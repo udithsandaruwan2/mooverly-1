@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm, ProfileForm
+from .forms import CustomUserCreationForm, ProfileForm, StaffcodeForm
+from products.forms import SizeForm, CategoryForm
 from .models import Profile, StaffCode
 from products.models import Product
 from .utils import local
@@ -13,6 +14,11 @@ def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'Username does not exists!')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -97,3 +103,48 @@ def updateProfile(request):
 
     context = {'form': form}
     return render(request, 'users/update-profile.html', context)
+
+@login_required(login_url="login")
+def createStaffcode(request):
+    profile = request.user.profile
+    form = StaffcodeForm()
+
+    if request.method == 'POST':
+        form = StaffcodeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Code added successfully!')
+            return redirect('dashboard')
+
+    context = {'form':form}
+    return render(request, 'users/create-staffcode.html', context)
+
+@login_required(login_url="login")
+def addSize(request):
+    profile = request.user.profile
+    tag = 'size'
+    form_size = SizeForm()
+    if request.method == 'POST':
+        form_size = SizeForm(request.POST)
+        if form_size.is_valid():
+            form_size.save()
+            messages.success(request, 'Size added successfully!')
+            return redirect('dashboard')
+
+    context = {'form_size':form_size, 'tag':tag}
+    return render(request, 'users/add-size-category.html', context)
+
+@login_required(login_url="login")
+def addCategory(request):
+    profile = request.user.profile
+    tag = 'category'
+    form_category = CategoryForm()
+    if request.method == 'POST':
+        form_category = CategoryForm(request.POST)
+        if form_category.is_valid():
+            form_category.save()
+            messages.success(request, 'Category added successfully!')
+            return redirect('dashboard')
+
+    context = {'form_category':form_category, 'tag':tag}
+    return render(request, 'users/add-size-category.html', context)

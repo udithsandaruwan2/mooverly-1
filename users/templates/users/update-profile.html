@@ -3,30 +3,44 @@
 {% block content %}
 
 <div class="row mt-5">
+    <!-- Left Empty Column for Centering -->
     <div class="col-md-3 col-lg-3 col-sm-1 col-xs-1"></div>
+    
+    <!-- Main Column for Form -->
     <div class="col-md-6 col-lg-6 col-sm-10 col-xs-10">
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;" >UPDATE ABOUT</h4>
+                    <!-- Form Title -->
+                    <h4 class="card-title" style="text-align: center;">UPDATE ABOUT</h4>
+                    
+                    <!-- Horizontal Line -->
                     <div class="m-4">
                         <hr>
                     </div>
+                    
+                    <!-- Update Form -->
                     <form class="form" method="POST" enctype="multipart/form-data">
-
                         {% csrf_token %}
+                        
+                        <!-- Render Form Fields -->
+                        {{ form.as_p }}
 
-                        {{form.as_p}}
-
+                        <!-- Form Actions -->
                         <div class="form-actions d-flex justify-content-end">
+                            <!-- Go Back Button -->
                             <a type="text" class="btn btn-light-primary m-1" style="background-color: grey; color: white;" href="{% url 'dashboard' %}">Go Back</a>
-                            <input type="submit" class="btn btn-primary me-1 m-1" value="Update"></input>
+                            
+                            <!-- Update Button -->
+                            <input type="submit" class="btn btn-primary me-1 m-1" value="Update">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Right Empty Column for Centering -->
     <div class="col-md-3 col-lg-3 col-sm-1 col-xs-1"></div>
 </div>
 

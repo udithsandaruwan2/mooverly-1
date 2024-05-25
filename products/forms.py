@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Product
+from .models import Product, Size, Category
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -40,3 +40,28 @@ class ProductForm(forms.ModelForm):
             {'class': 'form-control', 'placeholder': 'demo_link'}
         )
         
+
+class SizeForm(forms.ModelForm):
+    class Meta:
+        model = Size
+        fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(SizeForm, self).__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Size'}
+        )
+
+        
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(CategoryForm, self).__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Category'}
+        )

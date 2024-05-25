@@ -7,20 +7,25 @@
 <div id="auth">
         
     <div class="row h-100">
+        <!-- Left Column for Login Form -->
         <div class="col-lg-5 col-12">
             <div id="auth-left">
+                <!-- Logo Section -->
                 <div class="auth-logo" style="margin-bottom: 80px;">
                     <a href="">
-                        <img src="" alt="Logo" style="width: 220px; height: auto;">
+                        <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" alt="Logo" style="width: 220px; height: auto;">
                     </a>                    
-                </div>                
+                </div>
+                
+                <!-- Login Title and Subtitle -->
                 <h1 class="auth-title">Log in.</h1>
                 <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
     
+                <!-- Login Form -->
                 <form action="" method="POST">
-
                     {% csrf_token %}
-
+                    
+                    <!-- Username Input Field -->
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input type="text" class="form-control form-control-xl" name="username" placeholder="Username">
                         <div class="form-control-icon">
@@ -28,6 +33,7 @@
                         </div>
                     </div>
 
+                    <!-- Password Input Field -->
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input type="password" class="form-control form-control-xl" name="password" placeholder="Password">
                         <div class="form-control-icon">
@@ -35,6 +41,7 @@
                         </div>
                     </div>
 
+                    <!-- Keep Me Logged In Checkbox -->
                     <div class="form-check form-check-lg d-flex align-items-end">
                         <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" checked>
                         <label class="form-check-label text-gray-600" for="flexCheckDefault">
@@ -42,24 +49,24 @@
                         </label>
                     </div>                    
                     
+                    <!-- Login Button -->
                     <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
-
                 </form>
+                
+                <!-- Registration Link -->
                 <div class="text-center mt-5 text-lg fs-4">
-                  <p class="text-gray-600">Don't have an account? <a href="{% url 'register-page' %}" class="font-bold">Sign
-                          up</a>.</p>
-              </div>
+                    <p class="text-gray-600">Don't have an account? <a href="{% url 'register-page' %}" class="font-bold">Sign up</a>.</p>
+                </div>
             </div>
         </div>
+
+        <!-- Right Column for Background Image -->
         <div class="col-lg-7 d-none d-lg-block">
             <div id="auth-right" style="position: relative; width: 100%; height: 100%;">
-                <img src="" alt="Login Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                <img src="{% static 'images/back.jpg' %}" alt="Login Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
-        
     </div>
-    
 </div>
-
 
 {% endblock content %}

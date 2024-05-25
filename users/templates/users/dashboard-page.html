@@ -1,16 +1,11 @@
 {% extends 'main-web-non-sidebar.html' %}
-
 {% load static %}
 
 {% block content %}
-
 <div class="row">
     <div style="text-align: center;" class="m-4">
-        <h1>
-        Dashboard - 
-        {{ staff_code }}
-    </h1>
-</div>
+        <h1>Dashboard - {{ staff_code }}</h1>
+    </div>
     <div class="col-1"></div>
     <div class="col-10">
         <hr>
@@ -18,24 +13,18 @@
     <div class="col-1"></div>
 </div>
 
-
-    
-    
-
-
 <div class="m-4">
     <div class="row justify-content-center">
-
         {% if 'SHOP' in staff_code %}
-
+        <!-- SHOP specific cards -->
         <div class="col-6 col-lg-3 col-md-6">
             <a href="{% url 'user-products-page' %}">
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                 <div class="stats-icon purple mb-2">
-                                    <i class="iconly-boldShow"></i>
+                                    <i class="iconly-boldProfile"></i>
                                 </div>
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
@@ -51,9 +40,9 @@
                 <div class="card"> 
                     <div class="card-body px-4 py-4-5">
                         <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                 <div class="stats-icon blue mb-2">
-                                    <i class="iconly-boldProfile"></i>
+                                    <i class="iconly-boldAdd-User"></i>
                                 </div>
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
@@ -64,19 +53,18 @@
                 </div>
             </a>
         </div>
-
         {% endif %}
 
         {% if 'ADMIN' in staff_code %}
-        
+        <!-- ADMIN specific cards -->
         <div class="col-6 col-lg-3 col-md-6">
             <a href="{% url 'products-page' %}">
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                 <div class="stats-icon green mb-2">
-                                    <i class="iconly-boldAdd-User"></i>
+                                    <i class="iconly-boldBuy"></i>
                                 </div>
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
@@ -87,18 +75,71 @@
                 </div>
             </a>
         </div>
-
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'create-staffcode' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon blue mb-2">
+                                    <i class="iconly-boldAdd-User"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Create Staffcode</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'add-size' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon blue mb-2">
+                                    <i class="iconly-boldProfile"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Add Size</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <a href="{% url 'add-category' %}">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon blue mb-2">
+                                    <i class="iconly-boldProfile"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
+                                <h4 class="text-muted font-semibold">Add Category</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         {% endif %}
 
-        
+        <!-- Common cards for all staff codes -->
         <div class="col-6 col-lg-3 col-md-6">
             <a href="{% url 'update-profile' %}">
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                <div class="stats-icon red mb-2">
-                                    <i class="iconly-boldBookmark"></i>
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon purple mb-2">
+                                    <i class="iconly-boldAdd-User"></i>
                                 </div>
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 mt-2">
@@ -110,13 +151,12 @@
             </a>
         </div>
 
-
         <div class="col-6 col-lg-3 col-md-6">
             <a href="{% url 'logout' %}">
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                                 <div class="stats-icon red mb-2">
                                     <i class="iconly-boldBookmark"></i>
                                 </div>
@@ -128,41 +168,34 @@
                     </div>
                 </div>
             </a>
+        </div>
     </div>
-    </div>
 
-
-
-
-
-{% if 'ADMIN' in staff_code %}
-
-<div class="row mb-5 mt-5">
-    <div class="col-3"></div>
-    <div class="col-6">
-        <form class="form" method="get">
-            <div class="input-group input-group-lg">
-                <input type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" value="{{search_query}}" placeholder="Search by product name">
-                <div class="m-2">
-                    <button class="btn btn-outline-secondary rounded-pill" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
+    {% if 'ADMIN' in staff_code %}
+    <!-- Search bar for ADMIN staff -->
+    <div class="row mb-5 mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form class="form" method="get">
+                <div class="input-group input-group-lg">
+                    <input type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" value="{{search_query}}" placeholder="Search by product name">
+                    <div class="m-2">
+                        <button class="btn btn-outline-secondary rounded-pill" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </div>
-                
-            </div>
-        </form>
-    </div>
-    <div class="col-3"></div>
-</div>   
-<div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>   
 
     <hr>
 
+    <!-- Displaying profiles for ADMIN staff -->
     <div class="m-4">
         <div class="row justify-content-center">
-
-{% for profile in profiles %}
-
+            {% for profile in profiles %}
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <a href="{% url 'user-products' profile.id %}">
                     <div class="card">
@@ -175,7 +208,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="col-9">
                                     <div class="m-4 mb-0">
                                         <h4>{{profile.name}}</h4>
@@ -187,27 +219,14 @@
                                 <p class="card-text">
                                     {{profile.bio|slice:"170"}}
                                 </p>
-    
                             </div>
                         </div>
                     </div>
                 </a>     
             </div>
-            
             {% endfor %}
-
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-{% endif %}
-
+    {% endif %}
+</div>
 {% endblock content %}

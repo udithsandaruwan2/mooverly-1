@@ -30,7 +30,9 @@ def userProductsPage(request):
 @login_required(login_url="login")
 def singleProduct(request, pk):
     product = Product.objects.get(id=pk)
-    context = {'product':product}
+    profile = request.user.profile
+    staff_code = profile.staff_code.code if profile.staff_code else None
+    context = {'product':product, 'staff_code':staff_code}
     return render(request, 'products/single-product.html', context)
 
 @login_required(login_url="login")

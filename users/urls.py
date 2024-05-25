@@ -12,5 +12,9 @@ urlpatterns = [
     
     # path('profile/<str:pk>/', views.userProfile, name='user-profile'),
     path('user/update-profile/', views.updateProfile, name='update-profile'),
+    path('user/create-staffcode/', views.createStaffcode, name='create-staffcode'),
+    path('user/add-size/', views.addSize, name='add-size'),
+    path('user/add-category/', views.addCategory, name='add-category'),
+    
 
 ]

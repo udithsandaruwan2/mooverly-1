@@ -1,9 +1,8 @@
 {% extends 'main-web-non-sidebar.html' %}
 
 {% block content %}
-
 <div class="row mt-5">
-    <div class="col-md-3 col-lg-3"></div>
+    <div class="col-md-3 col-lg-3"></div> <!-- Spacer Column -->
     <div class="col-md-6 col-lg-6">
         <div class="card">
             <div class="card-content">
@@ -12,12 +11,13 @@
                     <p class="card-text">
                         Are you sure?
                     </p>
+                    <!-- Delete Product Form -->
                     <form class="form" method="POST">
-
-                        {% csrf_token %}
-
+                        {% csrf_token %} <!-- CSRF Token -->
                         <div class="form-actions d-flex justify-content-end">
+                            <!-- Go Back Button -->
                             <a type="text" class="btn btn-light-primary m-1" style="background-color: grey;" href="{% url 'account' %}">Go Back</a>
+                            <!-- Confirm Delete Button -->
                             <input type="submit" class="btn btn-primary me-1 m-1" value="Confirm" style="background-color: red;"></input>
                         </div>
                     </form>
@@ -25,7 +25,6 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-lg-3"></div>
+    <div class="col-md-3 col-lg-3"></div> <!-- Spacer Column -->
 </div>
-
 {% endblock content %}

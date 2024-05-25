@@ -7,7 +7,7 @@ class Product(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    featured_image = models.ImageField(default="logo.png", null=True, blank=True)
+    featured_image = models.ImageField(default="logo.png", null=True, blank=True, upload_to='products/')
     weight = models.IntegerField(null=True, blank=True)
     size = models.ManyToManyField('Size', blank=True)
     categories = models.ManyToManyField('Category', blank=True)
