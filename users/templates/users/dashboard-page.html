@@ -204,7 +204,11 @@
                                 <div class="col-3">
                                     <div class="m-4 mb-0">
                                         <div class="avatar avatar-xl me-3">
-                                            <img src="{{profile.profile_image.url}}" alt="">
+                                            {% if profile.profile_image %}
+                                        <img src="{{ profile.profile_image.url }}" alt="">
+                                    {% else %}
+                                        <img src="{% static 'images/profiles/user-default.png' %}" alt="Default Profile Image">
+                                    {% endif %}
                                         </div>
                                     </div>
                                 </div>

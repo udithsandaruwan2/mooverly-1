@@ -10,8 +10,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=200, null=True, blank=True)
     short_intro = models.CharField(max_length=200, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
-    profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/')
-    # default='profiles/user-default.png'
+    profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default='profiles/najb9j8ra3jxyggmx35u.png')
     staff_code = models.ForeignKey('StaffCode', null=True, blank=True, on_delete=models.SET_NULL)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
