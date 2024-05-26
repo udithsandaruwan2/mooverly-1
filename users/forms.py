@@ -10,22 +10,22 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['first_name', 'email', 'username', 'password1', 'password2', 'staff_code']
         labels = {
-            'first_name':'Name', 
+            'first_name':'Shop Name', 
         }
         
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
 
         self.fields['first_name'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'eg : Udith Sandaruwan', 'type':'text'},
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : sample shop', 'type':'text'},
         )
 
         self.fields['email'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder':'eg : udith@eventarc.com', 'type':'text'}
+            {'class': 'form-control form-control-xl', 'placeholder':'eg : sample@shop.com', 'type':'text'}
         )
 
         self.fields['username'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'eg : udith002', 'type':'text'}
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : sampleshop1', 'type':'text'}
         )
 
         self.fields['password1'].widget.attrs.update(
