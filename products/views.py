@@ -54,7 +54,7 @@ def addProduct(request):
 @login_required(login_url="login")
 def updateProduct(request, pk):
     profile = request.user.profile
-    product = profile.product_set.get(id=pk)
+    product = profile.product_set.get(uuid=pk)
     form = ProductForm(instance=product)
     
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def updateProduct(request, pk):
 
 @login_required(login_url="login")
 def deleteProduct(request, pk):
-    product = Product.objects.get(id=pk)
+    product = Product.objects.get(uuid=pk)
     
     if request.method == 'POST':
         product.delete()

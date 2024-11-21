@@ -13,7 +13,7 @@ class Profile(models.Model):
     profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default='profiles/najb9j8ra3jxyggmx35u.png')
     staff_code = models.ForeignKey('StaffCode', null=True, blank=True, on_delete=models.SET_NULL)
     created = models.DateTimeField(auto_now_add=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
     def __str__(self):
         return str(self.username)
@@ -23,7 +23,7 @@ class StaffCode(models.Model):
     code = models.CharField(max_length=200, null=True, blank=True)
     position = models.CharField(max_length=200, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     
     def __str__(self):
         return str(self.code)
